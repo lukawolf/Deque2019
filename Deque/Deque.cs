@@ -96,75 +96,21 @@ public class Deque<T> : IList<T>, IDeque<T>
 
         public override IEnumerator<RT> GetEnumerator()
         {
-            var toReturn = new DequeEnumerator<RT>(this);
-            enumerators.Add(toReturn);
-            return toReturn;
+            int changes = Changes;
+            for (int i = 0; i < Count; ++i)
+            {
+                if (changes != Changes)
+                {
+                    throw new InvalidOperationException();
+                }
+                yield return this[i];
+            }
         }
     }
     private struct Position
     {
         public int mapIndex;
         public int subArrayIndex;
-    }
-    private sealed class DequeEnumerator<ET> : IEnumerator<ET>, IChangeMarkingEnumerator
-    {
-        int position = -1;
-        private bool disposed = false;
-        private bool dequeChanged = false;
-        private Deque<ET> deque;
-        public DequeEnumerator(Deque<ET> deque)
-        {
-            this.deque = deque;
-        }
-        public ET Current
-        {
-            get
-            {
-                CheckDisposedAndDequeChanged();
-                try
-                {
-                    return deque[position];
-                }
-                catch (IndexOutOfRangeException)
-                {
-                    throw new InvalidOperationException();
-                }
-            }
-        }
-
-        object IEnumerator.Current => Current;
-
-        public void Dispose()
-        {
-            CheckDisposedAndDequeChanged();
-            deque.UnlistEnumerator(this);
-            deque = null;
-            disposed = true;
-        }
-
-        public bool MoveNext()
-        {
-            CheckDisposedAndDequeChanged();
-            position++;
-            return position < deque.Count;
-        }
-
-        public void Reset()
-        {
-            CheckDisposedAndDequeChanged();
-            position = -1;
-        }
-
-        public void DequeChanged()
-        {
-            dequeChanged = true;
-        }
-
-        private void CheckDisposedAndDequeChanged()
-        {
-            if (dequeChanged) throw new InvalidOperationException("Deque changed while enumerating");
-            if (disposed) throw new ObjectDisposedException("Enumerator was already disposed");
-        }
     }
 
     //Default capacity of Deque block
@@ -173,7 +119,7 @@ public class Deque<T> : IList<T>, IDeque<T>
     private T[][] map;
     private Position left;
     private Position right;
-    private readonly List<IChangeMarkingEnumerator> enumerators = new List<IChangeMarkingEnumerator>();
+    private int Changes = 0;
 
     public Deque(int blockSize)
     {
@@ -278,34 +224,22 @@ public class Deque<T> : IList<T>, IDeque<T>
         return GetEnumerator();
     }
 
-    public virtual IEnumerator<T> GetEnumerator()
-    {
-        var toReturn = new DequeEnumerator<T>(this);
-        enumerators.Add(toReturn);
-        return toReturn;
-    }
-    private void UnlistEnumerator(IChangeMarkingEnumerator enumerator)
-    {
-        enumerators.Remove(enumerator);
-    }
-
     private void AlertEnumeratorsOfChange()
     {
-        if (enumerators.Count < 1) return;
-        foreach (var enumerator in enumerators)
-        {
-            enumerator.DequeChanged();
-        }
-        enumerators.Clear();
+        Changes++;
     }
-    /*public virtual IEnumerator<T> GetEnumerator()
+    public virtual IEnumerator<T> GetEnumerator()
     {
-        int count = Count;
-        for (int i = 0; i != count; ++i)
+        int changes = Changes;
+        for (int i = 0; i < Count; ++i)
         {
-            yield return _circularBuffer[ConvertIndex(i)];
+            if (changes != Changes)
+            {
+                throw new InvalidOperationException();
+            }
+            yield return this[i];
         }
-    }*/
+    }
 
     public virtual int IndexOf(T item)
     {
