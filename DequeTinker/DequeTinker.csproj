@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FE0AF8A8-D715-454D-AAB5-A270E91D8626}</ProjectGuid>
+    <ProjectGuid>{5C874F85-FAFA-4B19-8769-CCC6E1B20D90}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Deque2019</RootNamespace>
-    <AssemblyName>Deque2019</AssemblyName>
+    <RootNamespace>DequeTinker</RootNamespace>
+    <AssemblyName>DequeTinker</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Deque\Deque.csproj">
+      <Project>{8640a97d-a4bb-46d1-b159-4ccdb45ec4ba}</Project>
+      <Name>Deque</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

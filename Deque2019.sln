@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deque2019", "Deque2019\Deque2019.csproj", "{FE0AF8A8-D715-454D-AAB5-A270E91D8626}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DequeTest", "DequeTest\DequeTest.csproj", "{A7A96005-D5A0-4F32-A80C-4F7228F328E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deque", "Deque\Deque.csproj", "{8640A97D-A4BB-46D1-B159-4CCDB45EC4BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DequeTinker", "DequeTinker\DequeTinker.csproj", "{5C874F85-FAFA-4B19-8769-CCC6E1B20D90}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FE0AF8A8-D715-454D-AAB5-A270E91D8626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE0AF8A8-D715-454D-AAB5-A270E91D8626}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE0AF8A8-D715-454D-AAB5-A270E91D8626}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE0AF8A8-D715-454D-AAB5-A270E91D8626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7A96005-D5A0-4F32-A80C-4F7228F328E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A96005-D5A0-4F32-A80C-4F7228F328E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7A96005-D5A0-4F32-A80C-4F7228F328E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7A96005-D5A0-4F32-A80C-4F7228F328E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8640A97D-A4BB-46D1-B159-4CCDB45EC4BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8640A97D-A4BB-46D1-B159-4CCDB45EC4BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8640A97D-A4BB-46D1-B159-4CCDB45EC4BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8640A97D-A4BB-46D1-B159-4CCDB45EC4BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C874F85-FAFA-4B19-8769-CCC6E1B20D90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C874F85-FAFA-4B19-8769-CCC6E1B20D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C874F85-FAFA-4B19-8769-CCC6E1B20D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C874F85-FAFA-4B19-8769-CCC6E1B20D90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
